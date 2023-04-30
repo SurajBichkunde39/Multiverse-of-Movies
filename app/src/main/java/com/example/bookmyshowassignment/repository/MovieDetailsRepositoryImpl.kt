@@ -2,6 +2,7 @@ package com.example.bookmyshowassignment.repository
 
 import com.example.bookmyshowassignment.api.MovieApi
 import com.example.bookmyshowassignment.data.model.Movie
+import com.example.bookmyshowassignment.data.model.MovieCredits
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -12,5 +13,9 @@ class MovieDetailsRepositoryImpl @Inject constructor(
 
     override suspend fun getMovieDetails(movieId: Int): Movie {
         return movieApi.getMovieDetails(movieId, apiKey)
+    }
+
+    override suspend fun getMovieCredits(movieId: Int): MovieCredits {
+        return movieApi.getMovieCredits(movieId, apiKey)
     }
 }
