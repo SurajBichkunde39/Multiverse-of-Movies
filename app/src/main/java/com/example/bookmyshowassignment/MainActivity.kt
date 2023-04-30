@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
                 .beginTransaction()
                 .replace(
                     R.id.fragment_container,
-                    MovieDetailFragment.newInstance(movieId = "453395")
+                    MovieDetailFragment.newInstance(movieId = 453395)
                 )
                 .commit()
         }

@@ -1,18 +1,17 @@
 package com.example.bookmyshowassignment.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.example.bookmyshowassignment.R
+import com.example.bookmyshowassignment.data.model.Movie
 import com.google.android.material.appbar.MaterialToolbar
 import dagger.hilt.android.AndroidEntryPoint
 
-private const val MOVIE_ID = "param1"
-private const val LOG_TAG = "MovieDetailFragment"
+private const val MOVIE_ID = "movie_id_param"
 
 /**
  * A simple [Fragment] subclass.
@@ -21,7 +20,7 @@ private const val LOG_TAG = "MovieDetailFragment"
  */
 @AndroidEntryPoint
 class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
-    private var movieId: String? = null
+    private var movieId = 453395
     private lateinit var toolbar: MaterialToolbar
     private lateinit var posterView: ImageView
 
@@ -30,7 +29,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            movieId = it.getString(MOVIE_ID)
+            movieId = it.getInt(MOVIE_ID)
         }
     }
 
@@ -38,17 +37,19 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
         super.onViewCreated(view, savedInstanceState)
         toolbar = view.findViewById(R.id.toolbar)
         posterView = view.findViewById(R.id.poster)
-        toolbar.title = "Avengers: Endgame"
-        loadImage()
-        movieDetailsViewModel.loadMovieDetails(453395)
+        movieDetailsViewModel.movieDetails.observe(viewLifecycleOwner, ::onMovieDataLoaded)
+        movieDetailsViewModel.loadMovieDetails(movieId)
     }
 
-    private fun loadImage(url: String? = null) {
-        Log.d(LOG_TAG, "Loading started for poster image.")
-        val posterUrl =
-            url ?: "https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg"
+    private fun onMovieDataLoaded(movie: Movie) {
+        toolbar.title = movie.title
+        loadImage(movie.posterPath)
+    }
+
+    private fun loadImage(url: String) {
+        val baseUrl = "https://image.tmdb.org/t/p/w300"
         Glide.with(this)
-            .load(posterUrl)
+            .load(baseUrl + url)
             .into(posterView)
     }
 
@@ -61,10 +62,10 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
          * @return A new instance of fragment MovieDetailFragment.
          */
         @JvmStatic
-        fun newInstance(movieId: String) =
+        fun newInstance(movieId: Int) =
             MovieDetailFragment().apply {
                 arguments = Bundle().apply {
-                    putString(MOVIE_ID, movieId)
+                    putInt(MOVIE_ID, movieId)
                 }
             }
     }
