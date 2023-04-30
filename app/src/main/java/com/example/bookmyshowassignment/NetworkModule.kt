@@ -8,6 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -17,8 +18,9 @@ object NetworkModule {
 
     @Provides
     @Singleton
+    @Named("ApiKey")
     fun provideApiKey(): String {
-        return System.getenv("MoveAPIKey") ?: "fallback key"
+        return System.getenv("MoveAPIKey") ?: "0799fb14a63d4ffe0ff4496b6bd30cfe"
     }
 
     @Provides
