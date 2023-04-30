@@ -6,4 +6,6 @@
     <string name="star_icon_content_description">Star icon</string>
     <string name="rating_string">%1$s/10</string>
     <string name="votes_string">%1$s votes ></string>
+    <string name="cast">Cast</string>
+    <string name="crew">Crew</string>
 </resources>

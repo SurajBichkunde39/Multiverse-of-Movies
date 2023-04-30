@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.bookmyshowassignment.R
 import com.example.bookmyshowassignment.data.model.Movie
@@ -25,6 +26,8 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     private lateinit var toolbar: MaterialToolbar
     private lateinit var posterView: ImageView
     private lateinit var infoContainer: View
+    private lateinit var castRecyclerView: RecyclerView
+    private lateinit var crewRecyclerView: RecyclerView
 
     private val movieDetailsViewModel by viewModels<MovieDetailsViewModel>()
 
@@ -37,11 +40,19 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initializeViews(view)
+        with(movieDetailsViewModel) {
+            movieDetails.observe(viewLifecycleOwner, ::onMovieDataLoaded)
+            loadMovieDetails(movieId)
+        }
+    }
+
+    private fun initializeViews(view: View) {
         toolbar = view.findViewById(R.id.toolbar)
         posterView = view.findViewById(R.id.poster)
         infoContainer = view.findViewById(R.id.info_container)
-        movieDetailsViewModel.movieDetails.observe(viewLifecycleOwner, ::onMovieDataLoaded)
-        movieDetailsViewModel.loadMovieDetails(movieId)
+        castRecyclerView = view.findViewById(R.id.cast_recycler_view)
+        crewRecyclerView = view.findViewById(R.id.crew_recycler_view)
     }
 
     private fun onMovieDataLoaded(movie: Movie) {
