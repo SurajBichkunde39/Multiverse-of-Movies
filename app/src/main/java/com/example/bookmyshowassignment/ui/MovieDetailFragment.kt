@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.example.bookmyshowassignment.R
 import com.google.android.material.appbar.MaterialToolbar
@@ -24,6 +25,8 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     private lateinit var toolbar: MaterialToolbar
     private lateinit var posterView: ImageView
 
+    private val movieDetailsViewModel by viewModels<MovieDetailsViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -37,6 +40,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
         posterView = view.findViewById(R.id.poster)
         toolbar.title = "Avengers: Endgame"
         loadImage()
+        movieDetailsViewModel.loadMovieDetails(453395)
     }
 
     private fun loadImage(url: String? = null) {

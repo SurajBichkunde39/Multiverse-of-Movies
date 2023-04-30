@@ -4,6 +4,8 @@ import com.squareup.moshi.Json
 
 data class Movie(
     var adult: Boolean,
+    @Json(name = "backdrop_path")
+    var backdropPath: String?,
     @Json(name = "belongs_to_collection")
     var belongsToCollection: BelongsToCollection?,
     var budget: Int,
@@ -35,7 +37,7 @@ data class Movie(
     var title: String,
     var video: Boolean,
     @Json(name = "vote_average")
-    var voteAverage: Int,
+    var voteAverage: Float,
     @Json(name = "vote_count")
     var voteCount: Int
 )
