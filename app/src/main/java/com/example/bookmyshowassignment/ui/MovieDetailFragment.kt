@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.bookmyshowassignment.R
 import com.google.android.material.appbar.MaterialToolbar
+import dagger.hilt.android.AndroidEntryPoint
 
 private const val MOVIE_ID = "param1"
 private const val LOG_TAG = "MovieDetailFragment"
@@ -17,6 +18,7 @@ private const val LOG_TAG = "MovieDetailFragment"
  * Use the [MovieDetailFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+@AndroidEntryPoint
 class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     private var movieId: String? = null
     private lateinit var toolbar: MaterialToolbar
