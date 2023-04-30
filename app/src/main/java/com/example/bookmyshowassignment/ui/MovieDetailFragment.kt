@@ -1,8 +1,10 @@
 package com.example.bookmyshowassignment.ui
 
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.bookmyshowassignment.R
+import com.google.android.material.appbar.MaterialToolbar
 
 private const val MOVIE_ID = "param1"
 
@@ -13,6 +15,7 @@ private const val MOVIE_ID = "param1"
  */
 class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     private var movieId: String? = null
+    private lateinit var toolbar: MaterialToolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +23,13 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
             movieId = it.getString(MOVIE_ID)
         }
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        toolbar = view.findViewById(R.id.toolbar)
+        toolbar.title = "Avengers: Endgame"
+    }
+
 
     companion object {
         /**
