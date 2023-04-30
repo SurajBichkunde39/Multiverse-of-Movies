@@ -1,41 +1,41 @@
 package com.example.bookmyshowassignment.data.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class Movie(
     var adult: Boolean,
-    @SerializedName("belongs_to_collection")
+    @Json(name = "belongs_to_collection")
     var belongsToCollection: BelongsToCollection?,
     var budget: Int,
     var genres: List<Genre>,
     var homepage: String?,
     var id: Int,
-    @SerializedName("imdb_id")
+    @Json(name = "imdb_id")
     var imdbId: String,
-    @SerializedName("original_language")
+    @Json(name = "original_language")
     var originalLanguage: String,
-    @SerializedName("original_title")
+    @Json(name = "original_title")
     var originalTitle: String,
     var overview: String,
     var popularity: String,
-    @SerializedName("poster_path")
+    @Json(name = "poster_path")
     var posterPath: String,
-    @SerializedName("production_companies")
+    @Json(name = "production_companies")
     var productionCompanies: List<ProductionCompany>,
-    @SerializedName("production_countries")
+    @Json(name = "production_countries")
     var productionCountries: List<ProductionCounty>,
-    @SerializedName("release_date")
+    @Json(name = "release_date")
     var releaseDate: String,
     var revenue: Int,
     var runtime: Int,
-    @SerializedName("spoken_languages")
+    @Json(name = "spoken_languages")
     var spokenLanguages: List<SpokenLanguage>,
     var status: String,
     var tagline: String?,
     var title: String,
     var video: Boolean,
-    @SerializedName("vote_average")
+    @Json(name = "vote_average")
     var voteAverage: Int,
-    @SerializedName("vote_count")
+    @Json(name = "vote_count")
     var voteCount: Int
 )

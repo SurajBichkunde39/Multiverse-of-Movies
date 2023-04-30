@@ -1,12 +1,12 @@
 package com.example.bookmyshowassignment.data.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class BelongsToCollection(
     var id: Int,
     var name: String,
-    @SerializedName("poster_path")
+    @Json(name = "poster_path")
     var posterPath: String?,
-    @SerializedName("backdrop_path")
+    @Json(name = "backdrop_path")
     var backdropPath: String?
 )

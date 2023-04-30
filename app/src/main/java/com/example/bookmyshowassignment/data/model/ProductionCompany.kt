@@ -1,8 +1,12 @@
 package com.example.bookmyshowassignment.data.model
 
+import com.squareup.moshi.Json
+
 data class ProductionCompany(
     var name: String,
     var id: Int,
-    var logo_path: String?,
-    var origin_country: String
+    @Json(name = "logo_path")
+    var logoPath: String?,
+    @Json(name = "origin_country")
+    var originCountry: String
 )
