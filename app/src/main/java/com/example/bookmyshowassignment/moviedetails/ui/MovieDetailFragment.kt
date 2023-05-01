@@ -59,7 +59,12 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     }
 
     private fun initializeViews(view: View) {
-        toolbar = view.findViewById(R.id.toolbar)
+        toolbar = view.findViewById<MaterialToolbar?>(R.id.toolbar).apply {
+            // This is temporary, given we know there are no other fragment.
+            setNavigationOnClickListener {
+                requireActivity().onBackPressed()
+            }
+        }
         posterView = view.findViewById(R.id.poster)
         infoContainer = view.findViewById(R.id.info_container)
         castRecyclerView = view.findViewById(R.id.cast_recycler_view)
