@@ -2,7 +2,7 @@ package com.example.bookmyshowassignment
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.bookmyshowassignment.ui.MovieDetailFragment
+import com.example.bookmyshowassignment.moviedetails.ui.MovieDetailFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

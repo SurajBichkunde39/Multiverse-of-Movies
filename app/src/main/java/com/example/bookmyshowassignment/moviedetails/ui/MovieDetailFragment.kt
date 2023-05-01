@@ -1,7 +1,9 @@
-package com.example.bookmyshowassignment.ui
+package com.example.bookmyshowassignment.moviedetails.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -10,7 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.bookmyshowassignment.R
-import com.example.bookmyshowassignment.data.model.Movie
+import com.example.bookmyshowassignment.booking.ui.TicketBookingActivity
+import com.example.bookmyshowassignment.moviedetails.model.Movie
 import com.google.android.material.appbar.MaterialToolbar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,6 +32,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     private lateinit var infoContainer: View
     private lateinit var castRecyclerView: RecyclerView
     private lateinit var crewRecyclerView: RecyclerView
+    private lateinit var bookTicketsButton: Button
 
     private lateinit var castAdapter: CreditsAdapter
     private lateinit var crewAdapter: CreditsAdapter
@@ -60,6 +64,13 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
         infoContainer = view.findViewById(R.id.info_container)
         castRecyclerView = view.findViewById(R.id.cast_recycler_view)
         crewRecyclerView = view.findViewById(R.id.crew_recycler_view)
+        bookTicketsButton = view.findViewById<Button?>(R.id.book_tickets_btn).apply {
+            setOnClickListener {
+                val intent = Intent(requireContext(), TicketBookingActivity::class.java)
+                intent.putExtra("movie_id", movieId)
+                startActivity(intent)
+            }
+        }
     }
 
     private fun setUpRecyclerViews() {

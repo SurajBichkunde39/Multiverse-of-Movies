@@ -1,4 +1,4 @@
-package com.example.bookmyshowassignment.data.model
+package com.example.bookmyshowassignment.moviedetails.model
 
 /**
  * Movie credit could be either industrial cast or a crew member.

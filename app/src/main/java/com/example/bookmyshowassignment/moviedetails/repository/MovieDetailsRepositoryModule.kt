@@ -1,6 +1,6 @@
-package com.example.bookmyshowassignment.repository
+package com.example.bookmyshowassignment.moviedetails.repository
 
-import com.example.bookmyshowassignment.api.MovieApi
+import com.example.bookmyshowassignment.moviedetails.api.MovieApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

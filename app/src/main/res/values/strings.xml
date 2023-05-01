@@ -8,4 +8,5 @@
     <string name="votes_string">%1$s votes ></string>
     <string name="cast">Cast</string>
     <string name="crew">Crew</string>
+    <string name="booking_string">book tickets for movie with id=%1$d</string>
 </resources>

@@ -1,8 +1,8 @@
-package com.example.bookmyshowassignment.repository
+package com.example.bookmyshowassignment.moviedetails.repository
 
-import com.example.bookmyshowassignment.api.MovieApi
-import com.example.bookmyshowassignment.data.model.Movie
-import com.example.bookmyshowassignment.data.model.MovieCredits
+import com.example.bookmyshowassignment.moviedetails.api.MovieApi
+import com.example.bookmyshowassignment.moviedetails.model.Movie
+import com.example.bookmyshowassignment.moviedetails.model.MovieCredits
 import javax.inject.Inject
 import javax.inject.Named
 

@@ -1,4 +1,4 @@
-package com.example.bookmyshowassignment.api
+package com.example.bookmyshowassignment.moviedetails.api
 
 import dagger.Module
 import dagger.Provides

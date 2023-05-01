@@ -1,11 +1,11 @@
-package com.example.bookmyshowassignment.ui
+package com.example.bookmyshowassignment.moviedetails.ui
 
 import androidx.lifecycle.*
-import com.example.bookmyshowassignment.data.model.Cast
-import com.example.bookmyshowassignment.data.model.Crew
-import com.example.bookmyshowassignment.data.model.Movie
-import com.example.bookmyshowassignment.data.model.MovieCredit
-import com.example.bookmyshowassignment.repository.MovieDetailsRepository
+import com.example.bookmyshowassignment.moviedetails.model.Cast
+import com.example.bookmyshowassignment.moviedetails.model.Crew
+import com.example.bookmyshowassignment.moviedetails.model.Movie
+import com.example.bookmyshowassignment.moviedetails.model.MovieCredit
+import com.example.bookmyshowassignment.moviedetails.repository.MovieDetailsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

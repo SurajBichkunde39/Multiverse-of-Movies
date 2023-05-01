@@ -1,4 +1,4 @@
-package com.example.bookmyshowassignment.data.model
+package com.example.bookmyshowassignment.moviedetails.model
 
 import com.squareup.moshi.Json
 

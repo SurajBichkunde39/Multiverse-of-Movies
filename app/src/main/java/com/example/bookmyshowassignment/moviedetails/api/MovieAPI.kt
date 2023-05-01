@@ -1,7 +1,7 @@
-package com.example.bookmyshowassignment.api
+package com.example.bookmyshowassignment.moviedetails.api
 
-import com.example.bookmyshowassignment.data.model.Movie
-import com.example.bookmyshowassignment.data.model.MovieCredits
+import com.example.bookmyshowassignment.moviedetails.model.Movie
+import com.example.bookmyshowassignment.moviedetails.model.MovieCredits
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
