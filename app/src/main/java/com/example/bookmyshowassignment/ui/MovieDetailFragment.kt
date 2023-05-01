@@ -96,8 +96,12 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
         }
     }
 
-    private fun loadImage(url: String) {
-        Glide.with(this).load(url.toRequestsUrl()).into(posterView)
+    private fun loadImage(url: String?) {
+        if (url != null) {
+            Glide.with(this).load(url.toRequestsUrl()).into(posterView)
+        } else {
+            // TODO("Fallback to the default url.")
+        }
     }
 
     companion object {

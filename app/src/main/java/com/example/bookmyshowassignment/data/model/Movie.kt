@@ -21,7 +21,7 @@ data class Movie(
     var overview: String,
     var popularity: String,
     @Json(name = "poster_path")
-    var posterPath: String,
+    var posterPath: String?,
     @Json(name = "production_companies")
     var productionCompanies: List<ProductionCompany>,
     @Json(name = "production_countries")
