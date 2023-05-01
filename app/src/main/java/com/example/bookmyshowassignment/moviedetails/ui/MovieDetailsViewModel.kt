@@ -32,6 +32,9 @@ class MovieDetailsViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Loads the necessary data related to the movie with the provided [movieId].
+     */
     fun loadData(movieId: Int) {
         loadMovieDetails(movieId)
         loadCastAndCrewDetails(movieId)
