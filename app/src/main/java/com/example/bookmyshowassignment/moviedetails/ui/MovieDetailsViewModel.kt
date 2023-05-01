@@ -32,9 +32,19 @@ class MovieDetailsViewModel @Inject constructor(
         }
     }
 
-    fun loadMovieDetails(movieId: Int) {
+    fun loadData(movieId: Int) {
+        loadMovieDetails(movieId)
+        loadCastAndCrewDetails(movieId)
+    }
+
+    private fun loadMovieDetails(movieId: Int) {
         viewModelScope.launch {
             _movieDetails.value = repository.getMovieDetails(movieId)
+        }
+    }
+
+    private fun loadCastAndCrewDetails(movieId: Int) {
+        viewModelScope.launch {
             val movieCredits = repository.getMovieCredits(movieId)
             _cast.value = movieCredits.cast
             _crew.value = movieCredits.crew

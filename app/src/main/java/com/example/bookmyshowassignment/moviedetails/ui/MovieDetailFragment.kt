@@ -54,7 +54,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
             movieDetails.observe(viewLifecycleOwner, ::onMovieDataLoaded)
             cast.observe(viewLifecycleOwner) { castAdapter.submitList(it) }
             crew.observe(viewLifecycleOwner) { crewAdapter.submitList(it) }
-            loadMovieDetails(movieId)
+            loadData(movieId)
         }
     }
 
