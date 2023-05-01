@@ -10,4 +10,6 @@
 
     <color name="button_color">#f74464</color>
     <color name="title_color">#242424</color>
+    <color name="member_name">#0d0d0d</color>
+    <color name="member_role">#939393</color>
 </resources>

@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.bookmyshowassignment.R
@@ -29,6 +30,9 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     private lateinit var castRecyclerView: RecyclerView
     private lateinit var crewRecyclerView: RecyclerView
 
+    private lateinit var castAdapter: CreditsAdapter
+    private lateinit var crewAdapter: CreditsAdapter
+
     private val movieDetailsViewModel by viewModels<MovieDetailsViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,8 +45,11 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initializeViews(view)
+        setUpRecyclerViews()
         with(movieDetailsViewModel) {
             movieDetails.observe(viewLifecycleOwner, ::onMovieDataLoaded)
+            cast.observe(viewLifecycleOwner) { castAdapter.submitList(it) }
+            crew.observe(viewLifecycleOwner) { crewAdapter.submitList(it) }
             loadMovieDetails(movieId)
         }
     }
@@ -53,6 +60,18 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
         infoContainer = view.findViewById(R.id.info_container)
         castRecyclerView = view.findViewById(R.id.cast_recycler_view)
         crewRecyclerView = view.findViewById(R.id.crew_recycler_view)
+    }
+
+    private fun setUpRecyclerViews() {
+        castAdapter = CreditsAdapter(requireContext(), emptyList())
+        castRecyclerView.adapter = castAdapter
+        castRecyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+        crewAdapter = CreditsAdapter(requireContext(), emptyList())
+        crewRecyclerView.adapter = crewAdapter
+        crewRecyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun onMovieDataLoaded(movie: Movie) {
@@ -78,8 +97,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     }
 
     private fun loadImage(url: String) {
-        val baseUrl = "https://image.tmdb.org/t/p/w300"
-        Glide.with(this).load(baseUrl + url).into(posterView)
+        Glide.with(this).load(url.toRequestsUrl()).into(posterView)
     }
 
     companion object {
