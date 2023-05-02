@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.bookmyshowassignment.R
 import com.example.bookmyshowassignment.booking.ui.TicketBookingActivity
 import com.example.bookmyshowassignment.moviedetails.model.Movie
@@ -114,7 +115,10 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
 
     private fun loadImage(url: String?) {
         if (url != null) {
-            Glide.with(this).load(url.toRequestsUrl()).into(posterView)
+            Glide.with(this)
+                .load(url.toRequestsUrl())
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into(posterView)
         } else {
             // TODO("Fallback to the default url.")
         }
